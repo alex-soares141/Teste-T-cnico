@@ -1,38 +1,38 @@
 import styled from "styled-components";
 
 export const SectionContainer = styled.nav`
-  background-color: ${({ theme }) => theme.colors.bluePrimary};
-  height: 47px;
+  background-color: ${({ theme }) => theme.colors.white};
+
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px;
 `;
+
 
 export const SectionList = styled.ul`
   list-style: none;
-  display: flex;
   width: 100%;
-  padding: 0;
+  padding: 32px;
   margin: 0;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
+  display: block; 
 
   li {
-    flex: 1;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px; 
+    padding: 12px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray}; 
+   margin-right: 12px;
   }
 
-  li:nth-child(1), 
-  li:nth-child(2) {
-    text-align: auto;
-  }
-
-  li:nth-child(3) {
-    margin: 0 auto;
-  }
-
-  li:nth-child(4), 
-  li:nth-child(5) {
-    text-align: auto;
+  img {
+    margin-left: 110px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }
 `;

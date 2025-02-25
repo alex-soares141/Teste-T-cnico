@@ -1,5 +1,5 @@
-import React from "react";
-import { NavbarContainer, NavbarList } from "./navBar";
+
+import { NavbarContainer, NavbarList } from "./NavBar";
 
 const menuItems = ["Foto", "Nome", "Cargo", "Data de admissão", "Telefone"];
 
