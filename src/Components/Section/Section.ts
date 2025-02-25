@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NavbarContainer = styled.nav`
+export const SectionContainer = styled.nav`
   background-color: ${({ theme }) => theme.colors.bluePrimary};
   height: 47px;
   width: 100%;
@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   justify-content: space-between;
 `;
 
-export const NavbarList = styled.ul`
+export const SectionList = styled.ul`
   list-style: none;
   display: flex;
   width: 100%;
