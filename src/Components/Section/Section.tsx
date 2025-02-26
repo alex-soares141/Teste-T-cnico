@@ -3,7 +3,6 @@ import {
   SectionContainer,
   SectionList,
   EmployeeItem,
-  EmployeeInfo,
   ToggleButton,
 } from "./Section";
 
@@ -23,7 +22,7 @@ interface Employee {
 const Section = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
-  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
+  
 
   useEffect(() => {
     fetch("/db.json")
@@ -50,10 +49,6 @@ const Section = () => {
     setFilteredEmployees(filtered);
   };
 
-  const toggleDetails = (id: number) => {
-    setExpanded((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
   return (
     <>
       <NavBar onSearch={handleSearch} />
@@ -62,31 +57,26 @@ const Section = () => {
           {filteredEmployees.length > 0 ? (
             filteredEmployees.map((employee) => (
               <EmployeeItem key={employee.id}>
-                <img src={employee.image} alt={employee.name} />
-                <EmployeeInfo>
+                <div className="employee-header">
+                  <img src={employee.image} alt={employee.name} />
+                  <p className="employee-name">{employee.name}</p>
+                </div>
+
+                <div className="details">
+                  <p>{employee.job}</p>
                   <p>
-                    <strong></strong> {employee.name}
-                  </p>
-                </EmployeeInfo>
-                <ToggleButton onClick={() => toggleDetails(employee.id)}>
-                  <img
-                    src={expanded[employee.id] ? IconUp : IconDown}
-                    alt="Toggle detalhes"
-                  />
-                </ToggleButton>
-                <div
-                  className={`details ${expanded[employee.id] ? "show" : ""}`}
-                >
-                  <p>
-                    <strong></strong> {employee.job}
-                  </p>
-                  <p>
-                    <strong></strong>{" "}
                     {new Date(employee.admission_date).toLocaleDateString()}
                   </p>
-                  <p>
-                    <strong></strong> {employee.phone}
-                  </p>
+                  <p>{employee.phone}</p>
+                </div>
+
+                <div className="icons">
+                  <ToggleButton>
+                    <img src={IconUp} alt="Mover para cima" />
+                  </ToggleButton>
+                  <ToggleButton>
+                    <img src={IconDown} alt="Mover para baixo" />
+                  </ToggleButton>
                 </div>
               </EmployeeItem>
             ))

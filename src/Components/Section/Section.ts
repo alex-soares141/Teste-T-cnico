@@ -3,52 +3,78 @@ import styled from "styled-components";
 export const SectionContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   width: 100%;
-  padding: 16px;
+  padding: 12px 16px;
 `;
 
 export const SectionList = styled.ul`
   list-style: none;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+  width: 95%;
+  padding: 10px;
+  margin: 30px;
   color: ${({ theme }) => theme.colors.black};
 `;
 
 export const EmployeeItem = styled.li`
   display: flex;
+  
+  width: 100%;
   align-items: center;
-  gap: 16px;
-  padding: 12px;
+  text-align: center;
+  padding: 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
 
   img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-left: 100px;
   }
 
  
-  .details {
+  .employee-header, .details {
     display: flex;
-    gap: 22px;
+    width: 100%;
+    justify-content: space-between;
+    
   }
 
-  .show {
-    display: block;
+  .employee-header {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    
+  }
+
+  .details {
+    flex: 1; 
+    display: flex;
+    justify-content: space-between;
+    margin-left: 190px;
+    margin-right: 110px;
+  }
+
+  .icons {
+    display: flex;
+    gap: 35px;
   }
 
   @media (max-width: 768px) {
-    /* Mostrar apenas Foto e Nome na linha principal */
-    display: grid;
-    grid-template-columns: 50px 1fr auto;
-    align-items: center;
-    
+    flex-direction: column;
+    align-items: flex-start;
+
     .details {
-      display: none; /* Oculta detalhes por padrão */
+      display: none; 
     }
 
     .show {
-      display: block; /* Exibe detalhes quando expandido */
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .icons {
+      align-self: flex-end;
     }
   }
 `;
@@ -56,7 +82,7 @@ export const EmployeeItem = styled.li`
 export const EmployeeInfo = styled.div`
   flex: 1;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ToggleButton = styled.button`
@@ -71,6 +97,6 @@ export const ToggleButton = styled.button`
   }
 
   @media (min-width: 769px) {
-    display: none; 
+    display: none;
   }
 `;
