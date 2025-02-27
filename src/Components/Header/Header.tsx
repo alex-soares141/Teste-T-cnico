@@ -1,10 +1,9 @@
 import Logo from '../../assets/Logo.png'
-import { HeaderStyles } from './header';
 const Header = () => {
   return (
-    <HeaderStyles>
+    <div>
       <img src={Logo} alt="LogoMarca BeTalent" />
-    </HeaderStyles>
+    </div>
   );
 };
 

@@ -58,6 +58,17 @@ const Section = ({ searchQuery }: SectionProps) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
+  // Função para formatar telefone no formato +55 (XX) XXXXX-XXXX
+  const formatPhoneNumber = (phone: string) => {
+    const cleaned = phone.replace(/\D/g, "");
+    
+    if (cleaned.length === 13) {
+      return `+55 (${cleaned.slice(2, 4)}) ${cleaned.slice(4, 9)}-${cleaned.slice(9)}`;
+    }
+    
+    return phone;
+  };
+
   return (
     <SectionContainer>
       <Table>
@@ -84,7 +95,9 @@ const Section = ({ searchQuery }: SectionProps) => {
                   <TableCell className="hide-on-mobile">
                     {new Date(employee.admission_date).toLocaleDateString()}
                   </TableCell>
-                  <TableCell className="hide-on-mobile">{employee.phone}</TableCell>
+                  <TableCell className="hide-on-mobile">
+                    {formatPhoneNumber(employee.phone)}
+                  </TableCell>
                   <TableCell>
                     <ToggleButton onClick={() => toggleDetails(employee.id)}>
                       <img
@@ -100,7 +113,7 @@ const Section = ({ searchQuery }: SectionProps) => {
                     <TableCell colSpan={6}>
                       <p><strong>Cargo:</strong> {employee.job}</p>
                       <p><strong>Admissão:</strong> {new Date(employee.admission_date).toLocaleDateString()}</p>
-                      <p><strong>Telefone:</strong> {employee.phone}</p>
+                      <p><strong>Telefone:</strong> {formatPhoneNumber(employee.phone)}</p>
                     </TableCell>
                   </DetailsRow>
                 )}

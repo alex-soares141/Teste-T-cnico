@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { NavContainer, SearchInput, Title } from "./NavBar";
-import React from "react";
+import { NavContainer, Title, SearchContainer, SearchInput } from "./NavBarStyles";
 
 interface NavBarProps {
   onSearch: (query: string) => void;
@@ -18,12 +17,14 @@ const NavBar = ({ onSearch }: NavBarProps) => {
   return (
     <NavContainer>
       <Title>Funcionários</Title>
-      <SearchInput
-        type="text"
-        placeholder="Pesquisar..."
-        value={search}
-        onChange={handleSearchChange}
-      />
+      <SearchContainer>
+        <SearchInput
+          type="text"
+          placeholder="Pesquisar"
+          value={search}
+          onChange={handleSearchChange}
+        />
+      </SearchContainer>
     </NavContainer>
   );
 };
