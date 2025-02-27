@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import {
   SectionContainer,
-  SectionList,
-  EmployeeItem,
+  Table,
+  TableHeader,
+  TableRow,
+  TableCell,
   ToggleButton,
+  DetailsRow,
 } from "./Section";
 
 import IconUp from "../../assets/Icon/charm_chevron-up.png";
 import IconDown from "../../assets/Icon/charm_chevron-down.png";
-import NavBar from "../NavBar/NavBar.tsx";
 
 interface Employee {
   id: number;
@@ -19,9 +21,14 @@ interface Employee {
   image: string;
 }
 
-const Section = () => {
+interface SectionProps {
+  searchQuery: string;
+}
+
+const Section = ({ searchQuery }: SectionProps) => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/db.json")
@@ -35,57 +42,78 @@ const Section = () => {
       );
   }, []);
 
-  const handleSearch = (query: string) => {
-    const lowerQuery = query.toLowerCase();
-
+  useEffect(() => {
+    const lowerQuery = searchQuery.toLowerCase();
     const filtered = employees.filter(
       (employee) =>
         employee.name.toLowerCase().includes(lowerQuery) ||
         employee.job.toLowerCase().includes(lowerQuery) ||
-        employee.phone.includes(query)
+        employee.phone.includes(searchQuery)
     );
 
     setFilteredEmployees(filtered);
+  }, [searchQuery, employees]);
+
+  const toggleDetails = (id: number) => {
+    setExpandedId(expandedId === id ? null : id);
   };
 
   return (
-    <>
-      <NavBar onSearch={handleSearch} />
-      <SectionContainer>
-        <SectionList>
+    <SectionContainer>
+      <Table>
+        <thead>
+          <TableRow header>
+            <TableHeader>FOTO</TableHeader>
+            <TableHeader>NOME</TableHeader>
+            <TableHeader className="hide-on-mobile">CARGO</TableHeader>
+            <TableHeader className="hide-on-mobile">DATA DE ADMISSÃO</TableHeader>
+            <TableHeader className="hide-on-mobile">TELEFONE</TableHeader>
+            <TableHeader></TableHeader>
+          </TableRow>
+        </thead>
+        <tbody>
           {filteredEmployees.length > 0 ? (
             filteredEmployees.map((employee) => (
-              <EmployeeItem key={employee.id}>
-                <div className="employee-header">
-                  <img src={employee.image} alt={employee.name} />
-
-                  <p className="employee-name">{employee.name}</p>
-                </div>
-
-                <div className="details">
-                  <p>{employee.job}</p>
-                  <p>
+              <>
+                <TableRow key={employee.id}>
+                  <TableCell>
+                    <img src={employee.image} alt={employee.name} />
+                  </TableCell>
+                  <TableCell>{employee.name}</TableCell>
+                  <TableCell className="hide-on-mobile">{employee.job}</TableCell>
+                  <TableCell className="hide-on-mobile">
                     {new Date(employee.admission_date).toLocaleDateString()}
-                  </p>
-                  <p>{employee.phone}</p>
-                </div>
+                  </TableCell>
+                  <TableCell className="hide-on-mobile">{employee.phone}</TableCell>
+                  <TableCell>
+                    <ToggleButton onClick={() => toggleDetails(employee.id)}>
+                      <img
+                        src={expandedId === employee.id ? IconUp : IconDown}
+                        alt="Alternar detalhes"
+                      />
+                    </ToggleButton>
+                  </TableCell>
+                </TableRow>
 
-                <div className="icons">
-                  <ToggleButton>
-                    <img src={IconUp} alt="Mover para cima" />
-                  </ToggleButton>
-                  <ToggleButton>
-                    <img src={IconDown} alt="Mover para baixo" />
-                  </ToggleButton>
-                </div>
-              </EmployeeItem>
+                {expandedId === employee.id && (
+                  <DetailsRow>
+                    <TableCell colSpan={6}>
+                      <p><strong>Cargo:</strong> {employee.job}</p>
+                      <p><strong>Admissão:</strong> {new Date(employee.admission_date).toLocaleDateString()}</p>
+                      <p><strong>Telefone:</strong> {employee.phone}</p>
+                    </TableCell>
+                  </DetailsRow>
+                )}
+              </>
             ))
           ) : (
-            <p>Nenhum funcionário encontrado.</p>
+            <TableRow>
+              <TableCell colSpan={6}>Nenhum funcionário encontrado.</TableCell>
+            </TableRow>
           )}
-        </SectionList>
-      </SectionContainer>
-    </>
+        </tbody>
+      </Table>
+    </SectionContainer>
   );
 };
 

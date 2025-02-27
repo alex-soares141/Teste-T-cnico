@@ -1,42 +1,30 @@
 import { useState } from "react";
-import {  NavbarContainer,NavbarList, SearchContainer, SearchInput, SearchIcon,Form,} from "./NavBar";
-import searchIcon from "../../assets/Icon/Default.png";
-  
-const menuItems = ["Foto", "Nome", "Cargo", "Data de admissão", "Telefone"];
+import { NavContainer, SearchInput, Title } from "./NavBar";
+import React from "react";
 
 interface NavBarProps {
   onSearch: (query: string) => void;
 }
 
 const NavBar = ({ onSearch }: NavBarProps) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState("");
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
-    setSearchTerm(query);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearch(query);
     onSearch(query); 
   };
 
   return (
-    <header>
-      <div>
-        <Form>
-          <h1>Funcionários</h1>
-          <SearchContainer>
-            <SearchIcon src={searchIcon} alt="Pesquisar" />
-            <SearchInput
-              type="text"
-              placeholder="Pesquisar"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </SearchContainer>
-        </Form>
-      </div>
-      <NavbarContainer>
-        <NavbarList>{menuItems.map((item, index) => <li key={index}>{item}</li>)}</NavbarList>
-      </NavbarContainer>
-    </header>
+    <NavContainer>
+      <Title>Funcionários</Title>
+      <SearchInput
+        type="text"
+        placeholder="Pesquisar..."
+        value={search}
+        onChange={handleSearchChange}
+      />
+    </NavContainer>
   );
 };
 
