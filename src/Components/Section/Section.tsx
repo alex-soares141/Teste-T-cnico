@@ -22,7 +22,6 @@ interface Employee {
 const Section = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [filteredEmployees, setFilteredEmployees] = useState<Employee[]>([]);
-  
 
   useEffect(() => {
     fetch("/db.json")
@@ -59,6 +58,7 @@ const Section = () => {
               <EmployeeItem key={employee.id}>
                 <div className="employee-header">
                   <img src={employee.image} alt={employee.name} />
+
                   <p className="employee-name">{employee.name}</p>
                 </div>
 

@@ -16,7 +16,6 @@ export const SectionList = styled.ul`
 
 export const EmployeeItem = styled.li`
   display: flex;
-  
   width: 100%;
   align-items: center;
   text-align: center;
@@ -30,8 +29,8 @@ export const EmployeeItem = styled.li`
     margin-left: 100px;
   }
 
- 
-  .employee-header, .details {
+  .employee-header,
+  .details {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -43,15 +42,19 @@ export const EmployeeItem = styled.li`
     display: flex;
     align-items: center;
     gap: 16px;
+
     
+    .employee-name {
+      margin-left: 60px; 
+    }
   }
 
   .details {
     flex: 1; 
     display: flex;
     justify-content: space-between;
-    margin-left: 190px;
-    margin-right: 110px;
+    margin-left: 480px; /* Dobrado para 480px */
+    margin-right: 160px; /* Dobrado para 160px */
   }
 
   .icons {
