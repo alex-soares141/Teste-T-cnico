@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavContainer, Title, SearchContainer, SearchInput } from "./NavBarStyles";
+import { NavContainer, Title, SearchContainer, SearchInput } from "./NavBar";
+import React from "react";
 
 interface NavBarProps {
   onSearch: (query: string) => void;
