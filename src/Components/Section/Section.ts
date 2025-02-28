@@ -8,20 +8,24 @@ export const SectionContainer = styled.div`
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.colors.gray} 0px 0px 10px 0px;
   margin: 0 auto;
+  margin-top:100px;
+  
 `;
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
 `;
 
 export const TableRow = styled.tr<{ header?: boolean }>`
-  background: ${({ header }) => (header ? "blue" : "transparent")};
-  color: ${({ header }) => (header ? "white" : "black")};
+  
+  color: ${({ theme }) => theme.colors.black};
   text-align: left;
-  font-weight: ${({ header }) => (header ? "bold" : "normal")};
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.fonts.heading2.family};
+  
 
   @media (max-width: 768px) {
     &.hide-on-mobile {
@@ -36,11 +40,15 @@ export const TableHeader = styled.th`
   font-size: 16px;
   background: blue;
   color: white;
+  
+  
 `;
 
 export const TableCell = styled.td`
   padding: 10px;
   text-align: center;
+  font-size: 16px;
+  
   img {
     width: 40px;
     height: 40px;
@@ -57,6 +65,7 @@ export const ToggleButton = styled.button`
 
 export const DetailsRow = styled.tr`
   background: #f8f9fa;
+  
   td {
     padding: 12px;
     text-align: left;

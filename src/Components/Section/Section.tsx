@@ -58,7 +58,7 @@ const Section = ({ searchQuery }: SectionProps) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  // Função para formatar telefone no formato +55 (XX) XXXXX-XXXX
+  
   const formatPhoneNumber = (phone: string) => {
     const cleaned = phone.replace(/\D/g, "");
     

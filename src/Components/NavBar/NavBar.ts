@@ -10,24 +10,30 @@ export const NavContainer = styled.nav`
   width: 100%;
   max-width: 961px;
   margin: 0 auto;
+  border-radius: 8px;
 `;
 
 export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.black};
   font-family: ${({ theme }) => theme.fonts.heading1.family};
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-align: left;
   margin: 0;
+  margin-top: 104px;
 `;
 
 export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.colors.gray};
-  border-radius: 4px;
-  padding: 5px 10px;
+  font-family: ${({ theme }) => theme.fonts.heading2.family};
+  padding: 12px 16px 12px 16px;
+  width: 287px;
   background-color: white;
+  border-radius: 8px;
+  margin-top: 104px;
+  font-size: 16px;
 `;
 
 export const SearchInput = styled.input`
