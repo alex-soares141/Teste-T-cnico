@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { NavContainer, Title, SearchContainer, SearchInput } from "./NavBar";
-import React from "react";
+import { NavContainer, SearchContainer, SearchInput, Title } from "./NavBar";
 
 interface NavBarProps {
   onSearch: (query: string) => void;
@@ -12,7 +11,7 @@ const NavBar = ({ onSearch }: NavBarProps) => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearch(query);
-    onSearch(query); 
+    onSearch(query);
   };
 
   return (

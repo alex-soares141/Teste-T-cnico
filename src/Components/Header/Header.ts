@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 export const HeaderStyles = styled.div`
- 
-  
-align-items: center;
-  justify-content: space-between;
-  width: 71.19px;
-  margin-top: 10px;
-  background-color: ${({ theme }) => theme.colors.lightGray};
- 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-width: 961px;
- margin-left: 24%;
+  max-width: 961px;
+  margin: 10px ;
+  margin-left: 30px;
+  background-color: ${({ theme }) => theme.colors.lightGray};
+
+  @media (max-width: 768px) {
+    padding: 0px;
+    justify-content: start;
+    margin-right: 14px;
+    
+  }
 `;

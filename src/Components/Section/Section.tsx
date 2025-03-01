@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import {
   SectionContainer,
   Table,
-  TableHeader,
   TableRow,
+  TableHeader,
   TableCell,
   ToggleButton,
-  DetailsRow,
+  DetailsRow
 } from "./Section";
 
 import IconUp from "../../assets/Icon/charm_chevron-up.png";
@@ -58,7 +58,6 @@ const Section = ({ searchQuery }: SectionProps) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  
   const formatPhoneNumber = (phone: string) => {
     const cleaned = phone.replace(/\D/g, "");
     
@@ -90,7 +89,16 @@ const Section = ({ searchQuery }: SectionProps) => {
                   <TableCell>
                     <img src={employee.image} alt={employee.name} />
                   </TableCell>
-                  <TableCell>{employee.name}</TableCell>
+                  <TableCell>
+                    {employee.name}
+                   
+                    <ToggleButton className="show-on-mobile" onClick={() => toggleDetails(employee.id)}>
+                      <img
+                        src={expandedId === employee.id ? IconUp : IconDown}
+                        alt="Alternar detalhes"
+                      />
+                    </ToggleButton>
+                  </TableCell>
                   <TableCell className="hide-on-mobile">{employee.job}</TableCell>
                   <TableCell className="hide-on-mobile">
                     {new Date(employee.admission_date).toLocaleDateString()}
@@ -98,7 +106,7 @@ const Section = ({ searchQuery }: SectionProps) => {
                   <TableCell className="hide-on-mobile">
                     {formatPhoneNumber(employee.phone)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="hide-on-mobile">
                     <ToggleButton onClick={() => toggleDetails(employee.id)}>
                       <img
                         src={expandedId === employee.id ? IconUp : IconDown}
@@ -114,6 +122,10 @@ const Section = ({ searchQuery }: SectionProps) => {
                       <p><strong>Cargo:</strong> {employee.job}</p>
                       <p><strong>Admissão:</strong> {new Date(employee.admission_date).toLocaleDateString()}</p>
                       <p><strong>Telefone:</strong> {formatPhoneNumber(employee.phone)}</p>
+                    
+                      <ToggleButton className="show-on-mobile" onClick={() => toggleDetails(employee.id)}>
+                        <img src={IconUp} alt="Fechar detalhes" />
+                      </ToggleButton>
                     </TableCell>
                   </DetailsRow>
                 )}
