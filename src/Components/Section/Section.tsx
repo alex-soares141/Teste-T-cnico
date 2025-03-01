@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+// src/components/Section/Section.tsx
+import React, { useState, useEffect } from "react";
 import {
   SectionContainer,
   Table,
   TableRow,
   TableHeader,
   TableCell,
-  ToggleButton,
-  DetailsRow
+  DetailsRow,
 } from "./Section";
-
-import IconUp from "../../assets/Icon/charm_chevron-up.png";
-import IconDown from "../../assets/Icon/charm_chevron-down.png";
+import ToggleButton from "../ToogleButton/ToogleButton.tsx"; // Importando o ToggleButton
 
 interface Employee {
   id: number;
@@ -37,9 +35,7 @@ const Section = ({ searchQuery }: SectionProps) => {
         setEmployees(data.employees);
         setFilteredEmployees(data.employees);
       })
-      .catch((error) =>
-        console.error("Erro ao buscar os funcionários:", error)
-      );
+      .catch((error) => console.error("Erro ao buscar os funcionários:", error));
   }, []);
 
   useEffect(() => {
@@ -50,7 +46,6 @@ const Section = ({ searchQuery }: SectionProps) => {
         employee.job.toLowerCase().includes(lowerQuery) ||
         employee.phone.includes(searchQuery)
     );
-
     setFilteredEmployees(filtered);
   }, [searchQuery, employees]);
 
@@ -60,11 +55,9 @@ const Section = ({ searchQuery }: SectionProps) => {
 
   const formatPhoneNumber = (phone: string) => {
     const cleaned = phone.replace(/\D/g, "");
-    
     if (cleaned.length === 13) {
       return `+55 (${cleaned.slice(2, 4)}) ${cleaned.slice(4, 9)}-${cleaned.slice(9)}`;
     }
-    
     return phone;
   };
 
@@ -84,21 +77,12 @@ const Section = ({ searchQuery }: SectionProps) => {
         <tbody>
           {filteredEmployees.length > 0 ? (
             filteredEmployees.map((employee) => (
-              <>
-                <TableRow key={employee.id}>
+              <React.Fragment key={employee.id}>
+                <TableRow>
                   <TableCell>
                     <img src={employee.image} alt={employee.name} />
                   </TableCell>
-                  <TableCell>
-                    {employee.name}
-                   
-                    <ToggleButton className="show-on-mobile" onClick={() => toggleDetails(employee.id)}>
-                      <img
-                        src={expandedId === employee.id ? IconUp : IconDown}
-                        alt="Alternar detalhes"
-                      />
-                    </ToggleButton>
-                  </TableCell>
+                  <TableCell>{employee.name}</TableCell>
                   <TableCell className="hide-on-mobile">{employee.job}</TableCell>
                   <TableCell className="hide-on-mobile">
                     {new Date(employee.admission_date).toLocaleDateString()}
@@ -106,30 +90,32 @@ const Section = ({ searchQuery }: SectionProps) => {
                   <TableCell className="hide-on-mobile">
                     {formatPhoneNumber(employee.phone)}
                   </TableCell>
-                  <TableCell className="hide-on-mobile">
-                    <ToggleButton onClick={() => toggleDetails(employee.id)}>
-                      <img
-                        src={expandedId === employee.id ? IconUp : IconDown}
-                        alt="Alternar detalhes"
-                      />
-                    </ToggleButton>
+                  <TableCell>
+                    <ToggleButton
+                      isExpanded={expandedId === employee.id}
+                      onToggle={() => toggleDetails(employee.id)}
+                    />
                   </TableCell>
                 </TableRow>
 
                 {expandedId === employee.id && (
                   <DetailsRow>
                     <TableCell colSpan={6}>
-                      <p><strong>Cargo:</strong> {employee.job}</p>
-                      <p><strong>Admissão:</strong> {new Date(employee.admission_date).toLocaleDateString()}</p>
-                      <p><strong>Telefone:</strong> {formatPhoneNumber(employee.phone)}</p>
-                    
-                      <ToggleButton className="show-on-mobile" onClick={() => toggleDetails(employee.id)}>
-                        <img src={IconUp} alt="Fechar detalhes" />
-                      </ToggleButton>
+                      <p>
+                        <strong>Cargo:</strong> {employee.job}
+                      </p>
+                      <p>
+                        <strong>Admissão:</strong>{" "}
+                        {new Date(employee.admission_date).toLocaleDateString()}
+                      </p>
+                      <p>
+                        <strong>Telefone:</strong>{" "}
+                        {formatPhoneNumber(employee.phone)}
+                      </p>
                     </TableCell>
                   </DetailsRow>
                 )}
-              </>
+              </React.Fragment>
             ))
           ) : (
             <TableRow>

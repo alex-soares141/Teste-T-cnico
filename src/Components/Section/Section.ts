@@ -8,12 +8,12 @@ export const SectionContainer = styled.div`
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.colors.gray} 0px 0px 10px 0px;
   margin: 100px auto 0;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 
   @media (max-width: 768px) {
     max-width: 335px;
     margin-top: 10px;
     padding: 5px;
-   
   }
 `;
 
@@ -22,11 +22,6 @@ export const Table = styled.table`
   border-collapse: collapse;
   background: white;
   border-radius: 8px;
-
-  @media (max-width: 768px) {
-    width: 335px;
-     margin-bottom: 10px;
-  }
 `;
 
 export const TableRow = styled.tr<{ header?: boolean }>`
@@ -34,8 +29,6 @@ export const TableRow = styled.tr<{ header?: boolean }>`
   color: ${({ header }) => (header ? "white" : "black")};
   text-align: left;
   font-size: 16px;
-  font-family: ${({ theme }) => theme.fonts.heading2.family};
-  background-color: red;
 `;
 
 export const TableHeader = styled.th`
@@ -44,13 +37,11 @@ export const TableHeader = styled.th`
   font-size: 16px;
   background: blue;
   color: white;
+  text-transform: uppercase;
 
   @media (max-width: 768px) {
-    padding: 16px;
-  
     &:nth-child(n + 3) {
       display: none;
-      
     }
   }
 `;
@@ -64,8 +55,6 @@ export const TableCell = styled.td`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    align-items: center;
-    padding-top: 10px;
   }
 
   @media (max-width: 768px) {
@@ -75,51 +64,51 @@ export const TableCell = styled.td`
   }
 `;
 
-export const ToggleButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-  margin-left: 10px; 
-  position: relative;
-  z-index: 10;
-
-  img {
-    width: 20px;
-    height: 20px;
-  }
-`;
-
-
 export const DetailsRow = styled.tr`
- background-color: red;
+  background-color: ${({ theme }) => theme.colors.lightGray};
 
   td {
     padding: 12px;
     text-align: left;
     padding-left: 45px;
-    
+    font-size: 14px;
   }
 `;
 
+export const MobileButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 
-export const HideOnMobile = styled.div`
-  @media (max-width: 768px) {
+  @media (min-width: 769px) {
     display: none;
-    color: ${({ theme }) => theme.colors.gray};
   }
 `;
 
-export const ShowOnMobile = styled.div`
-  display: none;
+export const ToggleButton = styled.button`
+  background: white;
+  border: 2px solid ${({ theme }) => theme.colors.gray};
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 
-  @media (max-width: 768px) {
-    display: inline-block;
-    margin-left: 10px; /* Adiciona um espaçamento para a direita */
-    position: relative;
-    z-index: 999; /* Garante que o botão fique acima de outros elementos */
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (min-width: 769px) {
+    display: none;
   }
 `;
-
-
-
