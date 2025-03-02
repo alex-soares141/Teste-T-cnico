@@ -7,7 +7,7 @@ export const NavContainer = styled.nav`
   height: 47px;
   background-color: ${({ theme }) => theme.colors.lightGray};
   padding: 0 20px;
-  width: 100%;
+  width:100%;
   max-width: 961px;
   margin: 0 auto;
   border-radius: 8px;
@@ -16,6 +16,9 @@ export const NavContainer = styled.nav`
     flex-direction: column;
     height: auto;
     padding: 0px;
+    justify-content: start;
+    margin-bottom: 40px;
+    margin-top: 20px;
   }
 `;
 
@@ -31,7 +34,7 @@ export const Title = styled.h1`
   @media (max-width: 768px) {
     margin-top: 20px;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-right: 220px;
   }
 `;
@@ -42,7 +45,7 @@ export const SearchContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray};
   font-family: ${({ theme }) => theme.fonts.heading2.family};
   padding: 12px 16px;
-  width: 287px;
+  width: 334px;
   background-color: white;
   border-radius: 8px;
   margin-top: 104px;
@@ -66,7 +69,7 @@ export const SearchInput = styled.input`
   @media (max-width: 768px) {
     width: 100%;
     max-width: 335px;
-    margin-top: 10px;
+    margin-top: 0;
     padding: 0px;
     padding-right: 5px;
   }
@@ -74,5 +77,17 @@ export const SearchInput = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray};
  
+  }
+`;
+
+export const Search = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-left: 90px;
+
+  @media (max-width: 768px) {
+    width: 24px;
+  height: 24px;
+  margin-left: 90px;
   }
 `;

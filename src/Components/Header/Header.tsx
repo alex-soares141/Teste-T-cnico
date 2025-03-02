@@ -1,11 +1,13 @@
-import Logo from '../../assets/Logo.png';
-import { HeaderStyles } from './Header';
+import Logo from "../../assets/Logo.png";
+import { HeaderSection, HeaderStyles } from "./Header";
 
 const Header = () => {
   return (
-    <HeaderStyles>
-      <img src={Logo} alt="LogoMarca BeTalent" />
-    </HeaderStyles>
+    <HeaderSection>
+      <HeaderStyles>
+        <img src={Logo} alt="LogoMarca BeTalent" />
+      </HeaderStyles>
+    </HeaderSection>
   );
 };
 

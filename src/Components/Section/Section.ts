@@ -48,6 +48,8 @@ export const TableHeader = styled.th`
   width: auto;
   min-width: 80px;
 
+
+
   &.mobile-only {
     display: none; 
   }
@@ -56,11 +58,21 @@ export const TableHeader = styled.th`
     &:nth-child(n + 3) {
       display: none;
     }
+
     &.mobile-only {
-      display: table-cell; 
+      display: table-cell; /* Mantém o comportamento normal da tabela */
+    }
+
+    .dotTable {
+      display: flex;
+      justify-content: flex-end; 
+      width: 85%; 
+      font-size: 18px;
+      align-items: center;
     }
   }
 `;
+
 
 
 export const TableCell = styled.td`
@@ -69,8 +81,8 @@ export const TableCell = styled.td`
   text-align: center;
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
   }
 
@@ -83,17 +95,15 @@ export const TableCell = styled.td`
       display: none;
     }
 
-    &.mobile-only {
+    &.mobile-only  {
       display: flex;
       justify-content: flex-end; 
-     
+      
+  
       
     }
   }
 `;
-
-
-
 
 export const DetailsRow = styled.tr`
   background-color: ${({ theme }) => theme.colors.lightGray};

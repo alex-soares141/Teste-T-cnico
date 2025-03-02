@@ -77,8 +77,9 @@ const Section = ({ searchQuery }: SectionProps) => {
               DATA DE ADMISSÃO
             </TableHeader>
             <TableHeader className="hide-on-mobile">TELEFONE</TableHeader>
-            <TableHeader className="mobile-only">.</TableHeader>
-          
+            <TableHeader className="mobile-only">
+              <span className="dotTable">.</span>
+            </TableHeader>
           </TableRow>
         </thead>
         <tbody>
@@ -87,7 +88,7 @@ const Section = ({ searchQuery }: SectionProps) => {
               <React.Fragment key={employee.id}>
                 <TableRow>
                   <TableCell>
-                 <img src={employee.image} alt={employee.name} />
+                    <img src={employee.image} alt={employee.name} />
                   </TableCell>
                   <TableCell>{employee.name}</TableCell>
                   <TableCell className="hide-on-mobile">

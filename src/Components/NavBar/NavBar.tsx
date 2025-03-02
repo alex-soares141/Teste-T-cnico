@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavContainer, SearchContainer, SearchInput, Title } from "./NavBar";
+import { NavContainer, Search, SearchContainer, SearchInput, Title } from "./NavBar";
+import SearchIcon from "../../assets/Icon/Default.png";
 
 interface NavBarProps {
   onSearch: (query: string) => void;
@@ -24,6 +25,7 @@ const NavBar = ({ onSearch }: NavBarProps) => {
           value={search}
           onChange={handleSearchChange}
         />
+        <Search src={SearchIcon} alt="Ícone de pesquisa" />
       </SearchContainer>
     </NavContainer>
   );

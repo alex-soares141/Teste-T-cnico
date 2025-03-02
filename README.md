@@ -81,9 +81,8 @@ Acesse no navegador
 
 /src
   ├── components   # Componentes reutilizáveis
+  ├── Public       # Api
   ├── pages        # Páginas da aplicação
-  ├── services     # Funções para consumo da API
-  ├── utils        # Funções auxiliares (formatação de dados, etc.)
   ├── App.tsx      # Componente principal
   ├── main.tsx     # Ponto de entrada da aplicação
 
