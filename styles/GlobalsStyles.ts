@@ -1,4 +1,10 @@
 const theme = {
+
+  margin: {
+    small: "0px",
+    medium: "10px",
+    large: "20px",
+  },
   colors: {
     bluePrimary: "#0500FF",
     blue10: "#EDEFFB",

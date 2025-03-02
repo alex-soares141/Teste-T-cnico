@@ -1,20 +1,9 @@
-import { useState } from "react";
-import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../styles/GlobalsStyles.ts";
-import Section from "./Components/Section/Section.tsx";
-import Header from "./Components/Header/Header.tsx";
-import NavBar from "./Components/NavBar/NavBar.tsx"; 
+import Home from "./Components/Pages/Home";
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState("");
 
-  return (
-    <ThemeProvider theme={GlobalStyles}>
-      <Header />
-      <NavBar onSearch={setSearchQuery} />
-      <Section searchQuery={searchQuery} />
-    </ThemeProvider>
-  );
+
+  return Home();
 }
 
 export default App;

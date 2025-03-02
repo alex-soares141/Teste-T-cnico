@@ -86,7 +86,7 @@ export const TableCell = styled.td`
     &.mobile-only {
       display: flex;
       justify-content: flex-end; 
-      align-items: center; 
+     
       
     }
   }

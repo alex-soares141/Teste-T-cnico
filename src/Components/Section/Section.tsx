@@ -1,4 +1,3 @@
-// src/components/Section/Section.tsx
 import React, { useState, useEffect } from "react";
 import {
   SectionContainer,
@@ -78,7 +77,7 @@ const Section = ({ searchQuery }: SectionProps) => {
               DATA DE ADMISSÃO
             </TableHeader>
             <TableHeader className="hide-on-mobile">TELEFONE</TableHeader>
-            <TableHeader className="mobile-only"></TableHeader>
+            <TableHeader className="mobile-only">.</TableHeader>
           
           </TableRow>
         </thead>
@@ -88,7 +87,7 @@ const Section = ({ searchQuery }: SectionProps) => {
               <React.Fragment key={employee.id}>
                 <TableRow>
                   <TableCell>
-                    <img src={employee.image} alt={employee.name} />
+                 <img src={employee.image} alt={employee.name} />
                   </TableCell>
                   <TableCell>{employee.name}</TableCell>
                   <TableCell className="hide-on-mobile">
@@ -115,7 +114,7 @@ const Section = ({ searchQuery }: SectionProps) => {
                         <strong>Cargo:</strong> {employee.job}
                       </p>
                       <p>
-                        <strong>Admissão:</strong>{" "}
+                        <strong>Data de Admissão:</strong>{" "}
                         {new Date(employee.admission_date).toLocaleDateString()}
                       </p>
                       <p>
