@@ -1,7 +1,7 @@
 
 import React from 'react';
-import IconUp from '../../assets/Iconup.png';
-import IconDown from '../../assets/Icondown.png';
+import IconUp from '../../assets/Icon/charm_chevron-up.png';
+import IconDown from '../../assets/Icon/charm_chevron-down.png';
 
 import { ToggleButtonContainer } from './ToogleButton';
 

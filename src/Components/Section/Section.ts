@@ -8,10 +8,10 @@ export const SectionContainer = styled.div`
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.colors.gray} 0px 0px 10px 0px;
   margin: 100px auto 0;
-  transition: max-width 0.3s ease, padding 0.3s ease;
+ 
 
   @media (max-width: 768px) {
-    max-width: 335px;
+    max-width: 350px;
     margin-top: 10px;
     padding: 5px;
   }
@@ -22,6 +22,7 @@ export const Table = styled.table`
   border-collapse: collapse;
   background: white;
   border-radius: 8px;
+  
 `;
 
 export const TableRow = styled.tr<{ header?: boolean }>`
@@ -29,6 +30,12 @@ export const TableRow = styled.tr<{ header?: boolean }>`
   color: ${({ header }) => (header ? "white" : "black")};
   text-align: left;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    
+   width: 100%;
+
+  }
 `;
 
 export const TableHeader = styled.th`
@@ -38,18 +45,28 @@ export const TableHeader = styled.th`
   background: blue;
   color: white;
   text-transform: uppercase;
+  width: auto;
+  min-width: 80px;
+
+  &.mobile-only {
+    display: none; 
+  }
 
   @media (max-width: 768px) {
     &:nth-child(n + 3) {
       display: none;
     }
+    &.mobile-only {
+      display: table-cell; 
+    }
   }
 `;
 
+
 export const TableCell = styled.td`
   padding: 10px;
-  text-align: center;
   font-size: 16px;
+  text-align: center;
 
   img {
     width: 40px;
@@ -57,12 +74,26 @@ export const TableCell = styled.td`
     border-radius: 50%;
   }
 
+  &.mobile-only {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     &:nth-child(n + 3) {
       display: none;
     }
+
+    &.mobile-only {
+      display: flex;
+      justify-content: flex-end; 
+      align-items: center; 
+      
+    }
   }
 `;
+
+
+
 
 export const DetailsRow = styled.tr`
   background-color: ${({ theme }) => theme.colors.lightGray};
@@ -80,35 +111,11 @@ export const MobileButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-
+  width: 32px;
+    height: 32px;
+    border: none;
   @media (min-width: 769px) {
     display: none;
   }
 `;
 
-export const ToggleButton = styled.button`
-  background: white;
-  border: 2px solid ${({ theme }) => theme.colors.gray};
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.2);
-  }
-
-  img {
-    width: 24px;
-    height: 24px;
-  }
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;

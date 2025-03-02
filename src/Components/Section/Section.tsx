@@ -8,7 +8,7 @@ import {
   TableCell,
   DetailsRow,
 } from "./Section";
-import ToggleButton from "../ToogleButton/ToogleButton.tsx"; // Importando o ToggleButton
+import ToggleButton from "../ToogleButton/ToogleButton.tsx";
 
 interface Employee {
   id: number;
@@ -35,7 +35,9 @@ const Section = ({ searchQuery }: SectionProps) => {
         setEmployees(data.employees);
         setFilteredEmployees(data.employees);
       })
-      .catch((error) => console.error("Erro ao buscar os funcionários:", error));
+      .catch((error) =>
+        console.error("Erro ao buscar os funcionários:", error)
+      );
   }, []);
 
   useEffect(() => {
@@ -56,7 +58,10 @@ const Section = ({ searchQuery }: SectionProps) => {
   const formatPhoneNumber = (phone: string) => {
     const cleaned = phone.replace(/\D/g, "");
     if (cleaned.length === 13) {
-      return `+55 (${cleaned.slice(2, 4)}) ${cleaned.slice(4, 9)}-${cleaned.slice(9)}`;
+      return `+55 (${cleaned.slice(2, 4)}) ${cleaned.slice(
+        4,
+        9
+      )}-${cleaned.slice(9)}`;
     }
     return phone;
   };
@@ -65,13 +70,16 @@ const Section = ({ searchQuery }: SectionProps) => {
     <SectionContainer>
       <Table>
         <thead>
-          <TableRow header>
+          <TableRow className="header">
             <TableHeader>FOTO</TableHeader>
             <TableHeader>NOME</TableHeader>
             <TableHeader className="hide-on-mobile">CARGO</TableHeader>
-            <TableHeader className="hide-on-mobile">DATA DE ADMISSÃO</TableHeader>
+            <TableHeader className="hide-on-mobile">
+              DATA DE ADMISSÃO
+            </TableHeader>
             <TableHeader className="hide-on-mobile">TELEFONE</TableHeader>
-            <TableHeader></TableHeader>
+            <TableHeader className="mobile-only"></TableHeader>
+          
           </TableRow>
         </thead>
         <tbody>
@@ -83,14 +91,16 @@ const Section = ({ searchQuery }: SectionProps) => {
                     <img src={employee.image} alt={employee.name} />
                   </TableCell>
                   <TableCell>{employee.name}</TableCell>
-                  <TableCell className="hide-on-mobile">{employee.job}</TableCell>
+                  <TableCell className="hide-on-mobile">
+                    {employee.job}
+                  </TableCell>
                   <TableCell className="hide-on-mobile">
                     {new Date(employee.admission_date).toLocaleDateString()}
                   </TableCell>
                   <TableCell className="hide-on-mobile">
                     {formatPhoneNumber(employee.phone)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="mobile-only">
                     <ToggleButton
                       isExpanded={expandedId === employee.id}
                       onToggle={() => toggleDetails(employee.id)}
