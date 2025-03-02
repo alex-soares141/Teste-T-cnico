@@ -47,6 +47,7 @@ export const TableHeader = styled.th`
   text-transform: uppercase;
   width: auto;
   min-width: 80px;
+ 
 
 
 
