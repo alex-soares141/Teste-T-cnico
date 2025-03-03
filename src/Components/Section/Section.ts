@@ -48,11 +48,17 @@ export const TableHeader = styled.th`
   width: auto;
   min-width: 80px;
  
+ &.Photo{
+  border-radius: 8px 0px 0px 0px;
+ }
 
-
+ &.Phone{
+  border-radius: 0px 8px 0px 0px;
+ }
 
   &.mobile-only {
     display: none; 
+    
   }
 
   @media (max-width: 768px) {
@@ -61,7 +67,8 @@ export const TableHeader = styled.th`
     }
 
     &.mobile-only {
-      display: table-cell; /* Mantém o comportamento normal da tabela */
+      display: table-cell;
+      border-radius: 0px 8px 0px 0px;
     }
 
     .dotTable {
@@ -70,6 +77,7 @@ export const TableHeader = styled.th`
       width: 85%; 
       font-size: 18px;
       align-items: center;
+      
     }
   }
 `;
@@ -89,6 +97,7 @@ export const TableCell = styled.td`
 
   &.mobile-only {
     display: none;
+    
   }
 
   @media (max-width: 768px) {
@@ -99,11 +108,22 @@ export const TableCell = styled.td`
     &.mobile-only  {
       display: flex;
       justify-content: flex-end; 
-      
+      border-radius: 8px ;
   
       
     }
+    &.details {
+    
+    p {
+      margin-top: 10px;
+      margin-bottom: 10px; 
+      display: flex;
+      justify-content: space-between;
+      
+    }
   }
+  }
+  
 `;
 
 export const DetailsRow = styled.tr`
@@ -112,7 +132,7 @@ export const DetailsRow = styled.tr`
   td {
     padding: 12px;
     text-align: left;
-    padding-left: 45px;
+    padding-left: 30px;
     font-size: 14px;
   }
 `;

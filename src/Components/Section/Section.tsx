@@ -70,13 +70,13 @@ const Section = ({ searchQuery }: SectionProps) => {
       <Table>
         <thead>
           <TableRow className="header">
-            <TableHeader>FOTO</TableHeader>
+            <TableHeader className="Photo">Foto</TableHeader>
             <TableHeader>NOME</TableHeader>
             <TableHeader className="hide-on-mobile">CARGO</TableHeader>
             <TableHeader className="hide-on-mobile">
               DATA DE ADMISSÃO
             </TableHeader>
-            <TableHeader className="hide-on-mobile">TELEFONE</TableHeader>
+            <TableHeader className="Phone">TELEFONE</TableHeader>
             <TableHeader className="mobile-only">
               <span className="dotTable">.</span>
             </TableHeader>
@@ -110,7 +110,7 @@ const Section = ({ searchQuery }: SectionProps) => {
 
                 {expandedId === employee.id && (
                   <DetailsRow>
-                    <TableCell colSpan={6}>
+                    <TableCell className="details" colSpan={6}>
                       <p>
                         <strong>Cargo:</strong> {employee.job}
                       </p>
